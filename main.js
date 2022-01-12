@@ -4,6 +4,7 @@ const playerName = document.querySelector('.playerName');
 const startGame = document.querySelector('.startGame');
 const drawCard = document.querySelector('.drawCard');
 const resetGame = document.querySelector('.resetGame');
+const playerHead = document.querySelector('.playerHead');
 
 let fullDeck = [];
 
@@ -11,7 +12,7 @@ function Game({}){
 
 }
 
-function Player({name = 'Player'} = {}){
+function Player(name){
     this.name = name;
 }
 
@@ -35,18 +36,14 @@ Deck.prototype.cardsCreate = function(){
     return fullDeck;
 };
 
-//hook up to a button
-const deck = new Deck()
-console.table(deck.cardsCreate());
-
-
 addPlayer.addEventListener('click', function(){
-    console.log(playerName.value)
-    
+    const player = new Player(playerName.value);
+    playerHead.insertAdjacentHTML("afterend", `<h4>${player.name}</h4>`)
 });
 
 startGame.addEventListener('click', function(){
-    console.log('hi')
+    const deck = new Deck()
+    console.table(deck.cardsCreate());
 });
 
 drawCard.addEventListener('click', function(){
