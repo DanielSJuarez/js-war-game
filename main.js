@@ -8,10 +8,7 @@ const playerHead = document.querySelector('.playerHead');
 
 let fullDeck = [];
 
-function Game({}){
-
-}
-
+//constructors
 function Player(name){
     this.name = name;
 }
@@ -27,6 +24,11 @@ function Card(value, names, suites){
     this.suites = suites;
 }
 
+function Game(){
+
+}
+
+//prototypes
 Deck.prototype.cardsCreate = function(){
     for(let i = 0; i < this.suites.length; i++){
         for(let j = 0; j < this.names.length; j++){
@@ -36,10 +38,19 @@ Deck.prototype.cardsCreate = function(){
     return fullDeck;
 };
 
+Player.prototype.playerDisplay = function(){
+    const display = document.createElement('div');
+    const deskAndCard = document.createTextNode(`Your deck has 26 cards. Your current card is`)
+    display.appendChild(deskAndCard);
+    document.body.insertAdjacentElement('afterend', display);
+}
+
+//buttons
 addPlayer.addEventListener('click', function(){
     const player = new Player(playerName.value);
     playerHead.insertAdjacentHTML("afterend", `<h4>${player.name}</h4>`)
-    console.log(playerName.textContent);
+    let diplay = document.createTextNote
+    player.playerDisplay();
     playerName.value = '';
 });
 
@@ -59,7 +70,19 @@ resetGame.addEventListener('click', function(){
 
 })();
 
+// document.body.onload = addElement;
 
-//let additionNumber = document.createTextNode(randomNumberNode)
-//additionGenerator.appendChild(additionNumber)
-//buttonSelector.append(additionGenerator)
+// function addElement () {
+//   // create a new div element
+//   const newDiv = document.createElement("div");
+
+//   // and give it some content
+//   const newContent = document.createTextNode("Hi there and greetings!");
+
+//   // add the text node to the newly created div
+//   newDiv.appendChild(newContent);
+
+//   // add the newly created element and its content into the DOM
+//   const currentDiv = document.getElementById("div1");
+//   document.body.insertBefore(newDiv, currentDiv);
+// }
