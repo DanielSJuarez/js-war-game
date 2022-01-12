@@ -39,6 +39,8 @@ Deck.prototype.cardsCreate = function(){
 addPlayer.addEventListener('click', function(){
     const player = new Player(playerName.value);
     playerHead.insertAdjacentHTML("afterend", `<h4>${player.name}</h4>`)
+    console.log(playerName.textContent);
+    playerName.value = '';
 });
 
 startGame.addEventListener('click', function(){
