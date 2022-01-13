@@ -51,8 +51,6 @@
     Deck.prototype.deckSplit = function () {
         playerOne = fullDeck.splice(0, 26);
         playerTwo = fullDeck.splice(0, 26);
-        // console.log(playerOne);
-        // console.log(playerTwo);
     }
 
     Player.prototype.playerDisplay = function () {
@@ -110,11 +108,8 @@
 
     startGame.addEventListener('click', function () {
         const deck = new Deck()
-        //console.table(deck.cardsCreate());
         deck.cardsCreate();
         deck.deckSplit();
-        //console.log(deck.deckSplit());
-
     });
 
     drawCard.addEventListener('click', function () {
@@ -126,7 +121,6 @@
         fullDeck = [];
         playerOne = [];
         playerTwo = [];
-        //console.log(fullDeck);
     });
 
 })();
