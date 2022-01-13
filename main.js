@@ -127,7 +127,7 @@
     addPlayer.addEventListener('click', function () {
         const player = new Player(playerName.value);
         if (playerName.value === ''){
-            alert(`Please add a name.`);
+            alert(`Please add a player name.`);
         } else {
             player.playerDisplay();
             playerName.value = '';
@@ -143,15 +143,16 @@
     });
 
     drawCard.addEventListener('click', function () {
+        if(playerOne.length === 0){
+            console.log('hi');
+            alert(`Congradulations ${playerHeadTwo.textContent}! You are the winner!! Press Reset/Forfeit to play again.`);
+        } else if (playerTwo.length === 0){
+            alert(`Congradulations ${playerHeadOne.textContent}! You are the winner!! Press Reset/Forfeit to play again.`);
+        } else {
         const game = new Game();
         game.draw();
         game.updateDeck();
         game.updateCard();
-
-        if(playerOne === []){
-            alert(`Congradulations ${playerHeadTwo.textContent}! You are the winner!! Press Reset/Forfeit to play again.`);
-        } else if (playerTwo === []){
-            alert(`Congradulations ${playerHeadOne.textContent}! You are the winner!! Press Reset/Forfeit to play again.`);
         }
     });
 
@@ -171,5 +172,4 @@
 })();
 
 //card format
-//fix winner notification
 //war notification
