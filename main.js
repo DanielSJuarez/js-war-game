@@ -55,10 +55,12 @@
     }
 
     Player.prototype.playerDisplay = function () {
-        if(playerHeadOne.textContent == "Player One"){
+        if(playerHeadOne.textContent === "Player One"){
             playerHeadOne.textContent = playerName.value;
-        } else {
+        } else if (playerHeadTwo.textContent === "Player Two"){
             playerHeadTwo.textContent = playerName.value;
+        } else {
+            alert(`Both player names have been selected, please reset to change!`)
         }
             
         
@@ -69,6 +71,7 @@
     }
 
     Game.prototype.draw = function () {
+    
         let currentCardOne = playerOne.shift();
         let currentCardTwo = playerTwo.shift();
 
@@ -80,6 +83,9 @@
                     playerTwo.push(war.shift());
                 }
             }
+            if(playerOne === []){
+                alert(`Congradulations ${playerHeadTwo.textContent}, you have won! Please press reset to play again!`)
+            }
             console.log(playerOne);
             console.log(playerTwo);
         } else if (currentCardOne.value > currentCardTwo.value) {
@@ -89,6 +95,9 @@
                 for (let i = 0; i < 8; i++) {
                     playerOne.push(war.shift());
                 }
+            }
+            if(playerTwo === []){
+                alert(`Congradulations ${playerHeadOne.textContent}, you have won! Please press reset to play again!`)
             }
             console.log(playerOne);
             console.log(playerTwo);
