@@ -9,11 +9,13 @@
     const playerOneDeck = document.querySelector('.playerOneDeck');
     const playerTwoDeck = document.querySelector('.playerTwoDeck');
     const playerOneCard = document.querySelector('.playerOneCard');
-    const playerTwoCard = document.querySelector('.playerOneCard');
+    const playerTwoCard = document.querySelector('.playerTwoCard');
 
     let fullDeck = [];
     let playerOne = [];
     let playerTwo = [];
+    let currentCardOne = [];
+    let currentCardTwo = [];
     let war = [];
 
 
@@ -24,7 +26,8 @@
 
     function Deck() {
         this.names = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
-        this.suites = ['diamonds', 'hearts', 'spades', 'clubs'];
+        //this.suites = ['diamonds', 'hearts', 'spades', 'clubs'];
+        this.suites = ['&#9830', '&#9829', '&#9824', '&#9827'];
     }
 
     function Card(value, names, suites) {
@@ -71,8 +74,9 @@
 
     Game.prototype.draw = function () {
 
-        let currentCardOne = playerOne.shift();
-        let currentCardTwo = playerTwo.shift();
+        currentCardOne = playerOne.shift();
+        currentCardTwo = playerTwo.shift();
+
 
         if (currentCardOne.value < currentCardTwo.value) {
             playerTwo.push(currentCardOne);
@@ -108,9 +112,15 @@
         }
     }
 
-    Game.prototype.updateDeck = function(){
+    Game.prototype.updateDeck = function () {
         playerOneDeck.textContent = `Deck Size = ${playerOne.length}`
         playerTwoDeck.textContent = `Deck Size = ${playerTwo.length}`
+    }
+
+    Game.prototype.updateCard = function () {
+        playerOneCard.innerHTML = `${currentCardOne.names}${currentCardOne.suites}`;
+        playerTwoCard.innerHTML = `${currentCardTwo.names}${currentCardTwo.suites}`;
+
     }
 
     //buttons
@@ -132,6 +142,7 @@
         const game = new Game();
         game.draw();
         game.updateDeck();
+        game.updateCard();
     });
 
     resetGame.addEventListener('click', function () {
@@ -141,17 +152,15 @@
         war = [];
         playerHeadOne.textContent = "Player One";
         playerHeadTwo.textContent = "Player Two";
-        playerOneDeck.textContent = `Deck Size = ${playerOne.length}`
-        playerTwoDeck.textContent = `Deck Size = ${playerTwo.length}`
+        playerOneDeck.textContent = `Deck Size = ${playerOne.length}`;
+        playerTwoDeck.textContent = `Deck Size = ${playerTwo.length}`;
+        playerOneCard.innerHTML = `A &#9827`;
+        playerTwoCard.innerHTML = `A &#9827`;
     });
 
 })();
 
-
-//currentCardOne.value currentCardTWo.value
-//&#9829; heart
-//&#9827; club
-//&#9824; spade
-//&#9830; diamond
-
-//1,2,3,4,5,6,7,8,9,10,J,Q,K,A
+//card format
+//winner notification
+//war notification
+//dont allow for emepty string to be passed
