@@ -9,8 +9,8 @@
     let fullDeck = [];
     let playerOne = [];
     let playerTwo = [];
-    let warOne = [];
-    let warTwo = [];
+    let war = [];
+   
 
     //constructors
     function Player(name) {
@@ -69,30 +69,33 @@
         if (currentCardOne.value < currentCardTwo.value) {
             playerTwo.push(currentCardOne);
             playerTwo.push(currentCardTwo);
-            if (warOne.length > 0) {
-                for (let i = 0; i < 4; i++) {
-                    playerTwo.push(warOne.shift());
-                    playerTwo.push(warTwo.shift());
+            if (war.length > 0) {
+                for (let i = 0; i < 8; i++) {
+                    playerTwo.push(war.shift());
                 }
             }
+            console.log(playerOne);
+            console.log(playerTwo);
         } else if (currentCardOne.value > currentCardTwo.value) {
             playerOne.push(currentCardTwo);
             playerOne.push(currentCardOne);
-            if (warOne.length > 0) {
-                for (let i = 0; i < 4; i++) {
-                    playerOne.push(warOne.shift());
-                    playerOne.push(warTwo.shift());
+            if (war.length > 0) {
+                for (let i = 0; i < 8; i++) {
+                    playerOne.push(war.shift());
                 }
             }
+            console.log(playerOne);
+            console.log(playerTwo);
         } else {
 
-            warOne.push(currentCardOne);
-            warTwo.push(currentCardTwo);
+            war.push(currentCardOne);
+            war.push(currentCardTwo);
 
             for (let i = 0; i < 3; i++) {
-                warOne.push(playerOne.shift());
-                warTwo.push(playerTwo.shift());
+                war.push(playerOne.shift());
+                war.push(playerTwo.shift());
             }
+            console.log(war);
         }
     }
 
