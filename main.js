@@ -67,12 +67,6 @@
         } else {
             alert(`Both player names have been selected, please reset to change!`)
         }
-
-
-        // const display = document.createElement('div');
-        // const deskAndCard = document.createTextNode(`Your deck has 26 cards. Your current card is`)
-        // display.appendChild(deskAndCard);
-        // document.body.insertAdjacentElement('afterend', display);
     }
 
     Game.prototype.draw = function () {
@@ -143,3 +137,11 @@
 
 })();
 
+
+//currentCardOne.value currentCardTWo.value
+//&#9829; heart
+//&#9827; club
+//&#9824; spade
+//&#9830; diamond
+
+//1,2,3,4,5,6,7,8,9,10,J,Q,K,A
