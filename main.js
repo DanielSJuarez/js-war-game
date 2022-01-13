@@ -108,6 +108,11 @@
         }
     }
 
+    Game.prototype.updateDeck = function(){
+        playerOneDeck.textContent = `Deck Size = ${playerOne.length}`
+        playerTwoDeck.textContent = `Deck Size = ${playerTwo.length}`
+    }
+
     //buttons
     addPlayer.addEventListener('click', function () {
         const player = new Player(playerName.value);
@@ -119,11 +124,14 @@
         const deck = new Deck()
         deck.cardsCreate();
         deck.deckSplit();
+        playerOneDeck.textContent = `Deck Size = 26`
+        playerTwoDeck.textContent = `Deck Size = 26`
     });
 
     drawCard.addEventListener('click', function () {
         const game = new Game();
         game.draw();
+        game.updateDeck();
     });
 
     resetGame.addEventListener('click', function () {
@@ -133,6 +141,8 @@
         war = [];
         playerHeadOne.textContent = "Player One";
         playerHeadTwo.textContent = "Player Two";
+        playerOneDeck.textContent = `Deck Size = ${playerOne.length}`
+        playerTwoDeck.textContent = `Deck Size = ${playerTwo.length}`
     });
 
 })();
