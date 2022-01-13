@@ -4,7 +4,8 @@
     const startGame = document.querySelector('.startGame');
     const drawCard = document.querySelector('.drawCard');
     const resetGame = document.querySelector('.resetGame');
-    const playerHead = document.querySelector('.playerHead');
+    const playerHeadOne = document.querySelector('.playerHeadOne');
+    const playerHeadTwo = document.querySelector('.playerHeadTwo');
 
     let fullDeck = [];
     let playerOne = [];
@@ -54,10 +55,17 @@
     }
 
     Player.prototype.playerDisplay = function () {
-        const display = document.createElement('div');
-        const deskAndCard = document.createTextNode(`Your deck has 26 cards. Your current card is`)
-        display.appendChild(deskAndCard);
-        document.body.insertAdjacentElement('afterend', display);
+        if(playerHeadOne.textContent == "Player One"){
+            playerHeadOne.textContent = playerName.value;
+        } else {
+            playerHeadTwo.textContent = playerName.value;
+        }
+            
+        
+        // const display = document.createElement('div');
+        // const deskAndCard = document.createTextNode(`Your deck has 26 cards. Your current card is`)
+        // display.appendChild(deskAndCard);
+        // document.body.insertAdjacentElement('afterend', display);
     }
 
     Game.prototype.draw = function () {
@@ -98,13 +106,11 @@
     }
 
     //buttons
-    // addPlayer.addEventListener('click', function () {
-    //     const player = new Player(playerName.value);
-    //     playerHead.insertAdjacentHTML("afterend", `<h4>${player.name}</h4>`)
-    //     let diplay = document.createTextNote;
-    //     player.playerDisplay();
-    //     playerName.value = ''; 
-    // });
+    addPlayer.addEventListener('click', function () {
+        const player = new Player(playerName.value);
+        player.playerDisplay();
+        playerName.value = ''; 
+    });
 
     startGame.addEventListener('click', function () {
         const deck = new Deck()
@@ -121,6 +127,9 @@
         fullDeck = [];
         playerOne = [];
         playerTwo = [];
+        war = [];
+        playerHeadOne.textContent = "Player One";
+        playerHeadTwo.textContent = "Player Two";
     });
 
 })();
