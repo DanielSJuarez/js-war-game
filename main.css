@@ -1,3 +1,14 @@
 html {
     background-color:grey;
 }
+
+.playerOneCard {
+    text-align: center;
+    padding:30px;
+}
+
+.playerTwoCard {
+    text-align: center;
+    padding: 30px;
+}
+  

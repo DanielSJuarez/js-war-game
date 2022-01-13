@@ -6,12 +6,16 @@
     const resetGame = document.querySelector('.resetGame');
     const playerHeadOne = document.querySelector('.playerHeadOne');
     const playerHeadTwo = document.querySelector('.playerHeadTwo');
+    const playerOneDeck = document.querySelector('.playerOneDeck');
+    const playerTwoDeck = document.querySelector('.playerTwoDeck');
+    const playerOneCard = document.querySelector('.playerOneCard');
+    const playerTwoCard = document.querySelector('.playerOneCard');
 
     let fullDeck = [];
     let playerOne = [];
     let playerTwo = [];
     let war = [];
-   
+
 
     //constructors
     function Player(name) {
@@ -35,6 +39,7 @@
 
     //prototypes
     Deck.prototype.cardsCreate = function () {
+
         for (let i = 0; i < this.suites.length; i++) {
             for (let j = 0; j < this.names.length; j++) {
                 fullDeck.push(new Card(j + 1, this.names[j], this.suites[i]));
@@ -55,15 +60,15 @@
     }
 
     Player.prototype.playerDisplay = function () {
-        if(playerHeadOne.textContent === "Player One"){
+        if (playerHeadOne.textContent === "Player One") {
             playerHeadOne.textContent = playerName.value;
-        } else if (playerHeadTwo.textContent === "Player Two"){
+        } else if (playerHeadTwo.textContent === "Player Two") {
             playerHeadTwo.textContent = playerName.value;
         } else {
             alert(`Both player names have been selected, please reset to change!`)
         }
-            
-        
+
+
         // const display = document.createElement('div');
         // const deskAndCard = document.createTextNode(`Your deck has 26 cards. Your current card is`)
         // display.appendChild(deskAndCard);
@@ -71,7 +76,7 @@
     }
 
     Game.prototype.draw = function () {
-    
+
         let currentCardOne = playerOne.shift();
         let currentCardTwo = playerTwo.shift();
 
@@ -83,9 +88,7 @@
                     playerTwo.push(war.shift());
                 }
             }
-            if(playerOne === []){
-                alert(`Congradulations ${playerHeadTwo.textContent}, you have won! Please press reset to play again!`)
-            }
+
             console.log(playerOne);
             console.log(playerTwo);
         } else if (currentCardOne.value > currentCardTwo.value) {
@@ -95,9 +98,6 @@
                 for (let i = 0; i < 8; i++) {
                     playerOne.push(war.shift());
                 }
-            }
-            if(playerTwo === []){
-                alert(`Congradulations ${playerHeadOne.textContent}, you have won! Please press reset to play again!`)
             }
             console.log(playerOne);
             console.log(playerTwo);
@@ -118,7 +118,7 @@
     addPlayer.addEventListener('click', function () {
         const player = new Player(playerName.value);
         player.playerDisplay();
-        playerName.value = ''; 
+        playerName.value = '';
     });
 
     startGame.addEventListener('click', function () {
