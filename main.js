@@ -32,9 +32,15 @@ function Game(){
 Deck.prototype.cardsCreate = function(){
     for(let i = 0; i < this.suites.length; i++){
         for(let j = 0; j < this.names.length; j++){
-            fullDeck.push(new Card(j+1, this.names[j], this.suites[i]));   
+            fullDeck.push(new Card(j + 1, this.names[j], this.suites[i]));   
         }
     }
+    for (i = fullDeck.length -1; i > 0; i--) {
+        j = Math.floor(Math.random() * i)
+        k = fullDeck[i]
+        fullDeck[i] = fullDeck[j]
+        fullDeck[j] = k
+      }
     return fullDeck;
 };
 
@@ -56,13 +62,7 @@ addPlayer.addEventListener('click', function(){
 
 startGame.addEventListener('click', function(){
     const deck = new Deck()
-    let splitDeck = deck.cardsCreate();
-    splitDeck();
-    let randomizer = Math.floor(Math.random() * splitDesk.length) + 1;
-    for(let i = 0; i < splitDeck.length; i++){
-        splitDeck.splice(randomizer, 1)
-    }
-    //console.table(deck.cardsCreate());
+    console.table(deck.cardsCreate());
 });
 
 drawCard.addEventListener('click', function(){
