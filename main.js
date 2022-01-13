@@ -61,11 +61,25 @@
     }
 
     Game.prototype.draw = function(){
-        let currenttCardOne = playerOne.shift()
-        let currenttCardTwo = playerTwo.shift()
-        console.log(currenttCardOne);
-        console.log(currenttCardOne < currenttCardTwo);
-        console.log(currenttCardTwo);
+        let currenttCardOne = playerOne.shift();
+        let currenttCardTwo = playerTwo.shift();
+
+        if(currenttCardOne.value < currenttCardTwo.value){
+            playerTwo.push(currenttCardOne);
+            playerTwo.push(currenttCardTwo);
+            console.log(playerTwo)
+            console.log(playerOne)
+        } else if (currenttCardOne.value > currenttCardTwo.value){
+            playerOne.push(currenttCardTwo);
+            playerOne.push(currenttCardOne);
+            console.log(playerTwo)
+            console.log(playerOne)
+        } else {
+            console.log('hi');
+        }
+        // console.log(currenttCardOne);
+        // console.log(currenttCardOne < currenttCardTwo);
+        // console.log(currenttCardTwo);
     }
 
     //buttons
