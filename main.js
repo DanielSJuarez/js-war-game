@@ -126,8 +126,12 @@
     //buttons
     addPlayer.addEventListener('click', function () {
         const player = new Player(playerName.value);
-        player.playerDisplay();
-        playerName.value = '';
+        if (playerName.value === ''){
+            alert(`Please add a name.`);
+        } else {
+            player.playerDisplay();
+            playerName.value = '';
+        }
     });
 
     startGame.addEventListener('click', function () {
@@ -143,6 +147,12 @@
         game.draw();
         game.updateDeck();
         game.updateCard();
+
+        if(playerOne === []){
+            alert(`Congradulations ${playerHeadTwo.textContent}! You are the winner!! Press Reset/Forfeit to play again.`);
+        } else if (playerTwo === []){
+            alert(`Congradulations ${playerHeadOne.textContent}! You are the winner!! Press Reset/Forfeit to play again.`);
+        }
     });
 
     resetGame.addEventListener('click', function () {
@@ -161,6 +171,5 @@
 })();
 
 //card format
-//winner notification
+//fix winner notification
 //war notification
-//dont allow for emepty string to be passed
