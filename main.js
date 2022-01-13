@@ -9,6 +9,8 @@
     let fullDeck = [];
     let playerOne = [];
     let playerTwo = [];
+    let warOne = [];
+    let warTwo = [];
 
     //constructors
     function Player(name) {
@@ -47,10 +49,10 @@
     };
 
     Deck.prototype.deckSplit = function () {
-        playerOne = fullDeck.splice(0, 25);
-        playerTwo = fullDeck.splice(0, 25);
-        console.log(playerOne);
-        console.log(playerTwo)
+        playerOne = fullDeck.splice(0, 26);
+        playerTwo = fullDeck.splice(0, 26);
+        // console.log(playerOne);
+        // console.log(playerTwo);
     }
 
     Player.prototype.playerDisplay = function () {
@@ -60,26 +62,38 @@
         document.body.insertAdjacentElement('afterend', display);
     }
 
-    Game.prototype.draw = function(){
-        let currenttCardOne = playerOne.shift();
-        let currenttCardTwo = playerTwo.shift();
+    Game.prototype.draw = function () {
+        let currentCardOne = playerOne.shift();
+        let currentCardTwo = playerTwo.shift();
 
-        if(currenttCardOne.value < currenttCardTwo.value){
-            playerTwo.push(currenttCardOne);
-            playerTwo.push(currenttCardTwo);
-            console.log(playerTwo)
-            console.log(playerOne)
-        } else if (currenttCardOne.value > currenttCardTwo.value){
-            playerOne.push(currenttCardTwo);
-            playerOne.push(currenttCardOne);
-            console.log(playerTwo)
-            console.log(playerOne)
+        if (currentCardOne.value < currentCardTwo.value) {
+            playerTwo.push(currentCardOne);
+            playerTwo.push(currentCardTwo);
+            if (warOne.length > 0) {
+                for (let i = 0; i < 4; i++) {
+                    playerTwo.push(warOne.shift());
+                    playerTwo.push(warTwo.shift());
+                }
+            }
+        } else if (currentCardOne.value > currentCardTwo.value) {
+            playerOne.push(currentCardTwo);
+            playerOne.push(currentCardOne);
+            if (warOne.length > 0) {
+                for (let i = 0; i < 4; i++) {
+                    playerOne.push(warOne.shift());
+                    playerOne.push(warTwo.shift());
+                }
+            }
         } else {
-            console.log('hi');
+
+            warOne.push(currentCardOne);
+            warTwo.push(currentCardTwo);
+
+            for (let i = 0; i < 3; i++) {
+                warOne.push(playerOne.shift());
+                warTwo.push(playerTwo.shift());
+            }
         }
-        // console.log(currenttCardOne);
-        // console.log(currenttCardOne < currenttCardTwo);
-        // console.log(currenttCardTwo);
     }
 
     //buttons
@@ -108,7 +122,7 @@
     resetGame.addEventListener('click', function () {
         fullDeck = [];
         playerOne = [];
-        playerTwo = []
+        playerTwo = [];
         //console.log(fullDeck);
     });
 
