@@ -49,14 +49,20 @@ Player.prototype.playerDisplay = function(){
 addPlayer.addEventListener('click', function(){
     const player = new Player(playerName.value);
     playerHead.insertAdjacentHTML("afterend", `<h4>${player.name}</h4>`)
-    let diplay = document.createTextNote
+    let diplay = document.createTextNote;
     player.playerDisplay();
     playerName.value = '';
 });
 
 startGame.addEventListener('click', function(){
     const deck = new Deck()
-    console.table(deck.cardsCreate());
+    let splitDeck = deck.cardsCreate();
+    splitDeck();
+    let randomizer = Math.floor(Math.random() * splitDesk.length) + 1;
+    for(let i = 0; i < splitDeck.length; i++){
+        splitDeck.splice(randomizer, 1)
+    }
+    //console.table(deck.cardsCreate());
 });
 
 drawCard.addEventListener('click', function(){
@@ -70,19 +76,3 @@ resetGame.addEventListener('click', function(){
 
 })();
 
-// document.body.onload = addElement;
-
-// function addElement () {
-//   // create a new div element
-//   const newDiv = document.createElement("div");
-
-//   // and give it some content
-//   const newContent = document.createTextNode("Hi there and greetings!");
-
-//   // add the text node to the newly created div
-//   newDiv.appendChild(newContent);
-
-//   // add the newly created element and its content into the DOM
-//   const currentDiv = document.getElementById("div1");
-//   document.body.insertBefore(newDiv, currentDiv);
-// }
