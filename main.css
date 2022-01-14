@@ -23,7 +23,7 @@ html {
     margin-left:400px;
     border: solid;
     border-radius: 5px;
-    height: 37px;
+    height: 37px; 
     width: 20px;
     background-color: white;
 }
@@ -61,6 +61,22 @@ html {
 }
 
 .playerName:hover{
+    background-color: #c9c9c9;
+}
+
+.playerOneDeck{
+    border: solid;
+    border-radius: 5px;
+    width: 125px;
+    padding-left: 10px;
+    background-color: #c9c9c9;
+}
+
+.playerTwoDeck{
+    border: solid;
+    border-radius: 5px;
+    width: 125px;
+    padding-left: 10px;
     background-color: #c9c9c9;
 }
   

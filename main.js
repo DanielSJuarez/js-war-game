@@ -125,7 +125,7 @@
     //buttons
     addPlayer.addEventListener('click', function () {
         const player = new Player(playerName.value);
-        if (playerName.value === ''){
+        if (playerName.value === '') {
             alert(`Please add a player name.`);
         } else {
             player.playerDisplay();
@@ -139,19 +139,20 @@
         deck.deckSplit();
         playerOneDeck.textContent = `Deck Size = 26`
         playerTwoDeck.textContent = `Deck Size = 26`
+        drawCard.disabled = false;
     });
 
     drawCard.addEventListener('click', function () {
-        if(playerOne.length === 0){
+        if (playerOne.length === 0) {
             console.log('hi');
             alert(`Congradulations ${playerHeadTwo.textContent}! You are the winner!! Press Reset/Forfeit to play again.`);
-        } else if (playerTwo.length === 0){
+        } else if (playerTwo.length === 0) {
             alert(`Congradulations ${playerHeadOne.textContent}! You are the winner!! Press Reset/Forfeit to play again.`);
         } else {
-        const game = new Game();
-        game.draw();
-        game.updateDeck();
-        game.updateCard();
+            const game = new Game();
+            game.draw();
+            game.updateDeck();
+            game.updateCard();
         }
     });
 
@@ -166,6 +167,7 @@
         playerTwoDeck.textContent = `Deck Size = ${playerTwo.length}`;
         playerOneCard.innerHTML = `A &#9827`;
         playerTwoCard.innerHTML = `A &#9827`;
+        drawCard.disabled = true;
     });
 
 })();
