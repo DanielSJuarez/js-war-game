@@ -12,6 +12,11 @@
     const playerTwoCard = document.querySelector('.playerTwoCard');
     const diplayBoxOne = document.querySelector('.winnerOne');
     const diplayBoxTwo = document.querySelector('.winnerTwo');
+    const warHideOne = document.getElementById('oneHide');
+    const warHideTwo = document.getElementById('twoHide');
+    let toggleCardOne = warHideOne.classList;
+    let toggleCardTwo = warHideTwo.classList;
+
 
     let fullDeck = [];
     let playerOne = [];
@@ -19,7 +24,6 @@
     let currentCardOne = [];
     let currentCardTwo = [];
     let war = [];
-
 
     //constructors
     function Player(name) {
@@ -82,6 +86,8 @@
         if (currentCardOne.value < currentCardTwo.value) {
             diplayBoxOne.innerHTML = '';
             diplayBoxTwo.innerHTML = 'ROUND WON!';
+            toggleCardOne.add('hide');
+            toggleCardTwo.add('hide');
             playerTwo.push(currentCardOne);
             playerTwo.push(currentCardTwo);
             if (war.length > 0) {
@@ -92,6 +98,8 @@
         } else if (currentCardOne.value > currentCardTwo.value) {
             diplayBoxOne.innerHTML = 'ROUND WON!';
             diplayBoxTwo.innerHTML = '';
+            toggleCardOne.add('hide');
+            toggleCardTwo.add('hide');
             playerOne.push(currentCardTwo);
             playerOne.push(currentCardOne);
             if (war.length > 0) {
@@ -102,6 +110,8 @@
         } else {
             diplayBoxOne.innerHTML = 'WAR!!!!!';
             diplayBoxTwo.innerHTML = 'WAR!!!!!';
+            toggleCardOne.remove('hide');
+            toggleCardTwo.remove('hide');
 
             war.push(currentCardOne);
             war.push(currentCardTwo);
