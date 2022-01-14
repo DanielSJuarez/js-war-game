@@ -100,7 +100,7 @@
             console.log(playerOne);
             console.log(playerTwo);
         } else {
-
+            alert("WAR!!!!!!");
             war.push(currentCardOne);
             war.push(currentCardTwo);
 
@@ -118,9 +118,8 @@
     }
 
     Game.prototype.updateCard = function () {
-        playerOneCard.innerHTML = `${currentCardOne.names}${currentCardOne.suites}`;
-        playerTwoCard.innerHTML = `${currentCardTwo.names}${currentCardTwo.suites}`;
-
+        playerOneCard.innerHTML = `${currentCardOne.names} ${currentCardOne.suites}`;
+        playerTwoCard.innerHTML = `${currentCardTwo.names} ${currentCardTwo.suites}`;
     }
 
     //buttons
@@ -171,5 +170,5 @@
 
 })();
 
-//card format
-//war notification
+
+//optimize notification and visual
