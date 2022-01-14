@@ -155,9 +155,9 @@
 
     drawCard.addEventListener('click', function () {
         if (playerOne.length === 0) {
-            diplayBoxTwo.innerHTML = `CONGRADULATIONS ${playerHeadTwo.textContent}! YOU ARE THE WINNER!! Press Reset/Forfeit to play again.`;
+            diplayBoxTwo.innerHTML = `CONGRATULATIONS ${playerHeadTwo.textContent}! YOU ARE THE WINNER!! Press Reset/Forfeit to play again.`;
         } else if (playerTwo.length === 0) {
-            diplayBoxOne.innerHTML = `CONGRADULATIONS ${playerHeadOne.textContent}! YOU ARE THE WINNER!! Press Reset/Forfeit to play again.`;
+            diplayBoxOne.innerHTML = `CONGRATULATIONS ${playerHeadOne.textContent}! YOU ARE THE WINNER!! Press Reset/Forfeit to play again.`;
         } else {
             const game = new Game();
             game.draw();
