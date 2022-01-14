@@ -175,4 +175,3 @@
 })();
 
 
-//optimize notification and visual
