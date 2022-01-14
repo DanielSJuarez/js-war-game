@@ -12,20 +12,25 @@
 <body>
     <h1>Welcome to War Games</h1>
     <hr>
-    <input class="playerName" type="text" placeholder="Player Name">
-    <button class="addPlayer">Add Player</button>
-    <button class="startGame">Start Game</button>
-    <button class="drawCard" disabled>Draw Card</button>
-    <button class="resetGame">Reset/Forfeit</button>
-
+    <div class="buttons">
+        <input class="playerName" type="text" placeholder="Player Name">
+        <button class="addPlayer">Add Player</button>
+        <button class="startGame">Start Game</button>
+        <button class="drawCard" disabled>Draw Card</button>
+        <button class="resetGame">Reset/Forfeit</button>
+    </div>
     <h2 class="playerHeadOne">Player One</h2>
     <h3 class="playerOneDeck">Deck Size = 0</h3>
-    <div class="playerOneCard">A &#9827</div>
-
+    <div>
+        <div class="winnerOne"></div>
+        <div class="playerOneCard">A &#9827</div>
+    </div>
     <h2 class="playerHeadTwo">Player Two</h2>
     <h3 class="playerTwoDeck">Deck Size = 0</h3>
-    <div class="playerTwoCard">A &#9827</div>
-
+    <div>
+        <div class="winnerTwo"></div>
+        <div class="playerTwoCard">A &#9827</div>
+    </div>
     <script src="./main.js"></script>
 </body>
 

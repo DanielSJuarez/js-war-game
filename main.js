@@ -10,6 +10,8 @@
     const playerTwoDeck = document.querySelector('.playerTwoDeck');
     const playerOneCard = document.querySelector('.playerOneCard');
     const playerTwoCard = document.querySelector('.playerTwoCard');
+    const diplayBoxOne = document.querySelector('.winnerOne');
+    const diplayBoxTwo = document.querySelector('.winnerTwo');
 
     let fullDeck = [];
     let playerOne = [];
@@ -77,8 +79,9 @@
         currentCardOne = playerOne.shift();
         currentCardTwo = playerTwo.shift();
 
-
         if (currentCardOne.value < currentCardTwo.value) {
+            diplayBoxOne.innerHTML = '';
+            diplayBoxTwo.innerHTML = 'ROUND WON!';
             playerTwo.push(currentCardOne);
             playerTwo.push(currentCardTwo);
             if (war.length > 0) {
@@ -86,10 +89,9 @@
                     playerTwo.push(war.shift());
                 }
             }
-
-            console.log(playerOne);
-            console.log(playerTwo);
         } else if (currentCardOne.value > currentCardTwo.value) {
+            diplayBoxOne.innerHTML = 'ROUND WON!';
+            diplayBoxTwo.innerHTML = '';
             playerOne.push(currentCardTwo);
             playerOne.push(currentCardOne);
             if (war.length > 0) {
@@ -97,10 +99,10 @@
                     playerOne.push(war.shift());
                 }
             }
-            console.log(playerOne);
-            console.log(playerTwo);
         } else {
-            alert("WAR!!!!!!");
+            diplayBoxOne.innerHTML = 'WAR!!!!!';
+            diplayBoxTwo.innerHTML = 'WAR!!!!!';
+
             war.push(currentCardOne);
             war.push(currentCardTwo);
 
@@ -108,7 +110,6 @@
                 war.push(playerOne.shift());
                 war.push(playerTwo.shift());
             }
-            console.log(war);
         }
     }
 
@@ -137,17 +138,16 @@
         const deck = new Deck()
         deck.cardsCreate();
         deck.deckSplit();
-        playerOneDeck.textContent = `Deck Size = 26`
-        playerTwoDeck.textContent = `Deck Size = 26`
+        playerOneDeck.textContent = `Deck Size = 26`;
+        playerTwoDeck.textContent = `Deck Size = 26`;
         drawCard.disabled = false;
     });
 
     drawCard.addEventListener('click', function () {
         if (playerOne.length === 0) {
-            console.log('hi');
-            alert(`Congradulations ${playerHeadTwo.textContent}! You are the winner!! Press Reset/Forfeit to play again.`);
+            diplayBoxTwo.innerHTML = `CONGRADULATIONS ${playerHeadTwo.textContent}! YOU ARE THE WINNER!! Press Reset/Forfeit to play again.`;
         } else if (playerTwo.length === 0) {
-            alert(`Congradulations ${playerHeadOne.textContent}! You are the winner!! Press Reset/Forfeit to play again.`);
+            diplayBoxOne.innerHTML = `CONGRADULATIONS ${playerHeadOne.textContent}! YOU ARE THE WINNER!! Press Reset/Forfeit to play again.`;
         } else {
             const game = new Game();
             game.draw();
@@ -168,6 +168,8 @@
         playerOneCard.innerHTML = `A &#9827`;
         playerTwoCard.innerHTML = `A &#9827`;
         drawCard.disabled = true;
+        diplayBoxOne.innerHTML = '';
+        diplayBoxTwo.innerHTML = '';
     });
 
 })();
