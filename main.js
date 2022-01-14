@@ -1,4 +1,8 @@
 (function () {
+    import Deck from './deck.js';
+    import Player from './player.js';
+    import Game from './game.js';
+
     const addPlayer = document.querySelector('.addPlayer');
     const playerName = document.querySelector('.playerName');
     const startGame = document.querySelector('.startGame');
@@ -19,8 +23,8 @@
 
 
     let fullDeck = [];
-    let playerOne = [];
-    let playerTwo = [];
+    export let playerOne = [];
+    export let playerTwo = [];
     let currentCardOne = [];
     let currentCardTwo = [];
     let war = [];

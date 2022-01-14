@@ -1,4 +1,8 @@
-function Deck() {
+import Card from './card.js';
+import playerOne from './main.js';
+import playerTwo from './main.js';
+
+export function Deck() {
     this.names = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
     //this.suites = ['diamonds', 'hearts', 'spades', 'clubs'];
     this.suites = ['&#9830', '&#9829', '&#9824', '&#9827'];

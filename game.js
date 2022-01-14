@@ -1,4 +1,4 @@
-function Game(currentGame = 'War Game') {
+export default function Game(currentGame = 'War Game') {
     this.currentGame = currentGame;
 }
 
