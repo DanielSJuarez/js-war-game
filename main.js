@@ -131,6 +131,18 @@
     Game.prototype.updateCard = function () {
         playerOneCard.innerHTML = `${currentCardOne.names} ${currentCardOne.suites}`;
         playerTwoCard.innerHTML = `${currentCardTwo.names} ${currentCardTwo.suites}`;
+
+        if(currentCardOne.suites.includes('&#9830') || currentCardOne.suites.includes('&#9829')) {
+            playerOneCard.style.color = 'red';
+        } else if (currentCardOne.suites.includes('&#9824') || currentCardOne.suites.includes('&#9827')) {
+            playerOneCard.style.color = 'black';
+        }
+
+        if(currentCardTwo.suites.includes('&#9830') || currentCardTwo.suites.includes('&#9829')) {
+            playerTwoCard.style.color = 'red';
+        } else if (currentCardTwo.suites.includes('&#9824') || currentCardTwo.suites.includes('&#9827')) {
+            playerTwoCard.style.color = 'black';
+        }
     }
 
     //buttons
@@ -175,8 +187,10 @@
         playerHeadTwo.textContent = "Player Two";
         playerOneDeck.textContent = `Deck Size = ${playerOne.length}`;
         playerTwoDeck.textContent = `Deck Size = ${playerTwo.length}`;
-        playerOneCard.innerHTML = `A &#9827`;
-        playerTwoCard.innerHTML = `A &#9827`;
+        playerOneCard.innerHTML = `A &#9824`;
+        playerTwoCard.innerHTML = `A &#9824`;
+        playerOneCard.style.color = 'black';
+        playerTwoCard.style.color = 'black';
         drawCard.disabled = true;
         diplayBoxOne.innerHTML = '';
         diplayBoxTwo.innerHTML = '';
